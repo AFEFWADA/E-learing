@@ -13,7 +13,7 @@ const Offre = () => {
   };
 
   return (
-    <Box display="flex" sx={{ backgroundColor: "#1F2A40", minHeight: "100vh" }}>
+    <Box display="flex" sx={{  minHeight: "100vh" }}>
       {/* Sidebar */}
       <SidebarComponent />
 

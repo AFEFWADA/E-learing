@@ -1,5 +1,14 @@
 import React, { useState } from "react";
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  TextField,
+} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { mockDataTeam } from "../Data"; // Replace this with actual data or API fetch
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
@@ -10,14 +19,14 @@ import SidebarComponent from "./Sidebar";
 
 const Team = () => {
   const [rows, setRows] = useState(mockDataTeam);
+  const [open, setOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   // DELETE LOGIC
   const handleDelete = (id) => {
-    // Remove user locally
     const updatedData = rows.filter((user) => user.id !== id);
     setRows(updatedData);
 
-    // Backend API call for deletion
     fetch(`http://localhost:5000/users/${id}`, {
       method: "DELETE",
     })
@@ -30,39 +39,38 @@ const Team = () => {
       .catch((error) => console.error(error));
   };
 
-  // UPDATE LOGIC
+  // OPEN UPDATE DIALOG
   const handleUpdate = (id) => {
     const userToUpdate = rows.find((user) => user.id === id);
+    setSelectedUser(userToUpdate);
+    setOpen(true);
+  };
 
-    // Prompt user for new data (replace with a modal/form in a real app)
-    const updatedName = window.prompt("Enter new name:", userToUpdate.name);
-    const updatedEmail = window.prompt("Enter new email:", userToUpdate.email);
-
-    if (!updatedName || !updatedEmail) return; // Cancel if no input
-
-    // Update user locally
+  // HANDLE SAVE
+  const handleSave = () => {
     const updatedData = rows.map((user) =>
-      user.id === id ? { ...user, name: updatedName, email: updatedEmail } : user
+      user.id === selectedUser.id ? selectedUser : user
     );
     setRows(updatedData);
 
-    // Backend API call for updating user
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`http://localhost:5000/users/${selectedUser.id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: updatedName, email: updatedEmail }),
+      body: JSON.stringify(selectedUser),
     })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to update user");
         }
         console.log("User updated successfully");
+        setOpen(false);
+        setSelectedUser(null);
       })
       .catch((error) => console.error(error));
   };
 
   const columns = [
-    { field: "id", headerName: "ID", width: 100 },
+    { field: "id", headerName: "ID", width: 100, cellClassName: "color--cell" },
     {
       field: "name",
       headerName: "Name",
@@ -102,10 +110,10 @@ const Team = () => {
           justifyContent="center"
           bgcolor={
             access === "admin"
-              ? "#3da58a"
+              ? "#626464"
               : access === "manager"
-              ? "#2e7c67"
-              : "#4caf50"
+              ? "#3F51B5"
+              : "#4CAF50"
           }
           borderRadius="4px"
         >
@@ -146,51 +154,82 @@ const Team = () => {
   ];
 
   return (
-    <Box
-      display="flex"
-      sx={{ backgroundColor: "#1F2A40", minHeight: "100vh" }}
-    >
-      {/* Sidebar */}
+    <Box display="flex" sx={{ minHeight: "100vh" }}>
       <SidebarComponent />
       <Box flex="1" p="20px">
-        {/* Header */}
         <Header title="TEAM" subtitle="Managing the Team Members" />
-
-        {/* DataGrid */}
         <Box
           m="40px 0"
           height="75vh"
           sx={{
-            "& .MuiDataGrid-root": {
-              border: "none",
-            },
-            "& .MuiDataGrid-cell": {
-              borderBottom: "none",
-            },
-            "& .name-column--cell": {
-              color: "#94e2cd",
-            },
-            "& .color--cell": {
-              color: "#ffffff",
-            },
+            "& .MuiDataGrid-root": { border: "none" },
+            "& .MuiDataGrid-cell": { borderBottom: "none" },
+            "& .name-column--cell": { color: "#3F51B5" },
+            "& .color--cell": { color: "#000000" },
             "& .MuiDataGrid-columnHeaders": {
-              backgroundColor: "#222447",
+              backgroundColor: "#1E293B",
               borderBottom: "none",
             },
-            "& .MuiDataGrid-virtualScroller": {
-              backgroundColor: "#1F2A40",
-            },
+            "& .MuiDataGrid-virtualScroller": { backgroundColor: "#e7ebea" },
             "& .MuiDataGrid-footerContainer": {
               borderTop: "none",
               backgroundColor: "#3e4396",
             },
-            "& .MuiCheckbox-root": {
-              color: "#b7ebde !important",
-            },
+            "& .MuiCheckbox-root": { color: "#3F51B5 !important" },
           }}
         >
           <DataGrid checkboxSelection rows={rows} columns={columns} />
         </Box>
+
+        {/* Update Dialog */}
+        <Dialog open={open} onClose={() => setOpen(false)}>
+          <DialogTitle>Update User</DialogTitle>
+          <DialogContent>
+            <TextField
+              label="Name"
+              value={selectedUser?.name || ""}
+              onChange={(e) =>
+                setSelectedUser((prev) => ({ ...prev, name: e.target.value }))
+              }
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Age"
+              type="number"
+              value={selectedUser?.age || ""}
+              onChange={(e) =>
+                setSelectedUser((prev) => ({ ...prev, age: e.target.value }))
+              }
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Phone"
+              value={selectedUser?.phone || ""}
+              onChange={(e) =>
+                setSelectedUser((prev) => ({ ...prev, phone: e.target.value }))
+              }
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              label="Email"
+              value={selectedUser?.email || ""}
+              onChange={(e) =>
+                setSelectedUser((prev) => ({ ...prev, email: e.target.value }))
+              }
+              fullWidth
+              margin="normal"
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={() => setOpen(false)}>Cancel</Button>
+            <Button onClick={handleSave} color="primary" variant="contained">
+              Save
+            </Button>
+          </DialogActions>
+        </Dialog>
       </Box>
     </Box>
   );

@@ -1,5 +1,7 @@
-import { Box } from "@mui/material";
 import SidebarComponent from "./Sidebar";
+import GeographyChart from "./front/Geo";
+import { Box,Typography } from "@mui/material";
+
 
 const Dashboard = () => {
   return (
@@ -9,18 +11,36 @@ const Dashboard = () => {
       <Box
         flex="1"
         m="20px"
-        bgcolor="#1F2A40"
         color="#ffffff"
         p="20px"
       >
-        {/* Header or Content */}
+        
         <Box
           display="grid"
           gridTemplateColumns="repeat(12, 1fr)"
           gridAutoRows="140px"
           gap="20px"
         >
-          {/* Your content goes here */}
+      {/* geo */}
+      <Box
+          gridColumn="span 4"
+          gridRow="span 2"
+          backgroundColor={"#727681"}
+          padding="30px"
+          width={"900px"}
+        >
+          <Typography
+            variant="h5"
+            fontWeight="600"
+            sx={{ marginBottom: "15px" }}
+          >
+            Geography Based Traffic
+          </Typography>
+          <Box height="200px" >
+            <GeographyChart isDashboard={true} />
+          </Box>
+        </Box>
+
         </Box>
       </Box>
     </Box>

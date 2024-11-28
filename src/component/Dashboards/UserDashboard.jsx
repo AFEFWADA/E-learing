@@ -1,26 +1,36 @@
 import React from 'react';
 import FeaturedTest from './FeaturedTest';
 import LineChart from './LineDatas';
+import Sidebarr from './Sidebar';
 
 const Dashboard = ({ user }) => {
   return (
-    <div style={{ display: 'flex', height: '100vh', backgroundColor: '#141b2d' }}>
+    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden' }}>
       {/* Sidebar */}
+      <div style={{ flex: '0 0 250px', height: '100vh' }}>
+        <Sidebarr />
+      </div>
 
       {/* Main Content */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', padding: '20px' }}>
-
-        <div style={{ display: 'flex', justifyContent: 'space-between' ,  marginLeft: '300px' }}>
-            <FeaturedTest />
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          padding: '20px',
+          overflowY: 'auto',
+        }}
+      >
+        {/* Featured Section */}
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <FeaturedTest />
         </div>
 
-
         {/* LineChart Section */}
-        <div style={{ marginTop: '10px', height: '45vh' , width: '90vh' ,  marginLeft: '300px'  }}>
+        <div style={{ marginTop: '20px', height: '45vh', width: '100%' }}>
           <LineChart />
         </div>
       </div>
-
     </div>
   );
 };
