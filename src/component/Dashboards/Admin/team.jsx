@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import {
   Box,
   Button,
@@ -21,6 +21,14 @@ const Team = () => {
   const [rows, setRows] = useState(mockDataTeam);
   const [open, setOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+
+    // Fetch data on component mount
+    useEffect(() => {
+      fetch("http://localhost:3300/users")
+        .then((response) => response.json())
+        .then((data) => setRows(data))
+        .catch((error) => console.error(error));
+    }, []);
 
   // DELETE LOGIC
   const handleDelete = (id) => {
@@ -77,17 +85,10 @@ const Team = () => {
       flex: 1,
       cellClassName: "name-column--cell",
     },
+ 
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
-      cellClassName: "color--cell",
-    },
-    {
-      field: "phone",
-      headerName: "Phone Number",
+      field: "lastName",
+      headerName: "LastName",
       flex: 1,
       cellClassName: "color--cell",
     },
@@ -194,21 +195,12 @@ const Team = () => {
               fullWidth
               margin="normal"
             />
+
             <TextField
-              label="Age"
-              type="number"
-              value={selectedUser?.age || ""}
+              label="LastName"
+              value={selectedUser?.lastName || ""}
               onChange={(e) =>
-                setSelectedUser((prev) => ({ ...prev, age: e.target.value }))
-              }
-              fullWidth
-              margin="normal"
-            />
-            <TextField
-              label="Phone"
-              value={selectedUser?.phone || ""}
-              onChange={(e) =>
-                setSelectedUser((prev) => ({ ...prev, phone: e.target.value }))
+                setSelectedUser((prev) => ({ ...prev, lastName: e.target.value }))
               }
               fullWidth
               margin="normal"

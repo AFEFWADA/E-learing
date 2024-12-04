@@ -26,9 +26,21 @@ const Dashboard = ({ user }) => {
           <FeaturedTest />
         </div>
 
-        {/* LineChart Section */}
-        <div style={{ marginTop: '20px', height: '45vh', width: '100%' }}>
-          <LineChart />
+        {/* LineChart and Calendar Section */}
+        <div
+          style={{
+            display: 'flex',
+            marginTop: '20px',
+            height: '45vh',
+            justifyContent: 'space-between',
+          }}
+        >
+          {/* LineChart */}
+          <div style={{ flex: 1, marginRight: '20px' }}>
+            <LineChart />
+          </div>
+
+         
         </div>
       </div>
     </div>

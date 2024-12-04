@@ -1,163 +1,141 @@
 export const LineData = [
     {
-      id: "japan",
-      color: "#4cceac",
+      id: "REACT",
+      color: "#000000",
       data: [
         {
-          x: "plane",
+          x: "level 1",
           y: 101,
         },
         {
-          x: "helicopter",
+          x: "level 2",
           y: 75,
         },
         {
-          x: "boat",
+          x: "level 3",
           y: 36,
         },
         {
-          x: "train",
+          x: "level 4",
           y: 216,
         },
         {
-          x: "subway",
+          x: "level 5",
           y: 35,
         },
         {
-          x: "bus",
+          x: "level 6",
           y: 236,
         },
         {
-          x: "car",
+          x: "level 7",
           y: 88,
         },
         {
-          x: "moto",
+          x: "level 8",
           y: 232,
         },
         {
-          x: "bicycle",
+          x: "level 9",
           y: 281,
         },
         {
-          x: "horse",
+          x: "level 10",
           y: 1,
         },
-        {
-          x: "skateboard",
-          y: 35,
-        },
-        {
-          x: "others",
-          y: 14,
-        },
+        
       ],
     },
     {
-      id: "france",
+      id: "JAVA",
       color: "#94e2cd",
       data: [
         {
-          x: "plane",
+          x: "level 1",
           y: 212,
         },
         {
-          x: "helicopter",
+          x: "level 2",
           y: 190,
         },
         {
-          x: "boat",
+          x: "level 3",
           y: 270,
         },
         {
-          x: "train",
+          x: "level 4",
           y: 9,
         },
         {
-          x: "subway",
+          x: "level 5",
           y: 75,
         },
         {
-          x: "bus",
+          x: "level 6",
           y: 175,
         },
         {
-          x: "car",
+          x: "level 7",
           y: 33,
         },
         {
-          x: "moto",
+          x: "level 8",
           y: 189,
         },
         {
-          x: "bicycle",
+          x: "level 9",
           y: 97,
         },
         {
-          x: "horse",
+          x: "level 10",
           y: 87,
         },
-        {
-          x: "skateboard",
-          y: 299,
-        },
-        {
-          x: "others",
-          y: 251,
-        },
+        
       ],
     },
     {
-      id: "us",
+      id: "PYTHON",
       color: "#f1b9b7",
       data: [
         {
-          x: "plane",
+          x: "level 1",
           y: 191,
         },
         {
-          x: "helicopter",
+          x: "level 2",
           y: 136,
         },
         {
-          x: "boat",
+          x: "level 3",
           y: 91,
         },
         {
-          x: "train",
+          x: "level 4",
           y: 190,
         },
         {
-          x: "subway",
+          x: "level 5",
           y: 211,
         },
         {
-          x: "bus",
+          x: "level 6",
           y: 152,
         },
         {
-          x: "car",
+          x: "level 7",
           y: 189,
         },
         {
-          x: "moto",
+          x: "level 8",
           y: 152,
         },
         {
-          x: "bicycle",
+          x: "level 9",
           y: 8,
         },
         {
-          x: "horse",
+          x: "level 10",
           y: 197,
-        },
-        {
-          x: "skateboard",
-          y: 107,
-        },
-        {
-          x: "others",
-          y: 170,
         },
       ],
     },
@@ -223,8 +201,8 @@ export const LineData = [
     },
     {
       id: 8,
-      name: "Rossini Frances",
-      email: "rossinifrances@gmail.com",
+      name: "Rossini JAVAs",
+      email: "rossiniJAVAs@gmail.com",
       age: 36,
       phone: "(222)444-5555",
       access: "user",
@@ -320,8 +298,8 @@ export const mockDataContacts = [
   },
   {
     id: 8,
-    name: "Rossini Frances",
-    email: "rossinifrances@gmail.com",
+    name: "Rossini JAVAs",
+    email: "rossiniJAVAs@gmail.com",
     age: 36,
     phone: "(222)444-5555",
     address: "4123 Ever Blvd, Wentington, AD 142213",
@@ -423,8 +401,8 @@ export const mockDataInvoices = [
   },
   {
     id: 8,
-    name: "Rossini Frances",
-    email: "rossinifrances@gmail.com",
+    name: "Rossini JAVAs",
+    email: "rossiniJAVAs@gmail.com",
     cost: "21.24",
     phone: "(222)444-5555",
     date: "05/02/2021",
@@ -596,4 +574,39 @@ export const mockPieData = [
 ];
 
 
+// Question Types
+// 1. MCQs | Multiple Choice | single
 
+export const quiz = {
+  topic: 'Javascript',
+  level: 'Beginner',
+  totalQuestions: 4,
+  perQuestionScore: 5,
+  questions: [
+    {
+      question: 'Which function is used to serialize an object into a JSON string in Javascript?',
+      choices: ['stringify()', 'parse()', 'convert()', 'None of the above'],
+      type: 'MCQs',
+      correctAnswer: 'stringify()',
+    },
+    {
+      question: 'Which of the following keywords is used to define a variable in Javascript?',
+      choices: ['var', 'let', 'var and let', 'None of the above'],
+      type: 'MCQs',
+      correctAnswer: 'var and let',
+    },
+    {
+      question:
+        'Which of the following methods can be used to display data in some form using Javascript?',
+      choices: ['document.write()', 'console.log()', 'window.alert', 'All of the above'],
+      type: 'MCQs',
+      correctAnswer: 'All of the above',
+    },
+    {
+      question: 'How can a datatype be declared to be a constant type?',
+      choices: ['const', 'var', 'let', 'constant'],
+      type: 'MCQs',
+      correctAnswer: 'const',
+    },
+  ],
+}

@@ -39,7 +39,7 @@ const Dashboard = () => {
           <Box height="200px" >
             <GeographyChart isDashboard={true} />
           </Box>
-        </Box>
+      </Box>
 
         </Box>
       </Box>

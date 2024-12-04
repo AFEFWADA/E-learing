@@ -9,27 +9,27 @@ const LineChart = ({ isCustomLineColors = false, isDashboard = false }) => {
         axis: {
           domain: {
             line: {
-              stroke: "#e0e0e0", 
+              stroke: "#343a40", 
             },
           },
           legend: {
             text: {
-              fill: "#e0e0e0", 
+              fill: "#343a40", 
             },
           },
           ticks: {
             line: {
-              stroke: "#e0e0e0", 
+              stroke: "#343a40", 
               strokeWidth: 1,
             },
             text: {
-              fill: "#e0e0e0", 
+              fill: "#343a40", 
             },
           },
         },
         legends: {
           text: {
-            fill: "#e0e0e0", 
+            fill: "#343a40", 
           },
         },
         tooltip: {
