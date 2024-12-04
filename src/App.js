@@ -13,6 +13,8 @@ import Team from './component/Dashboards/Admin/team';
 import Offre from './component/Dashboards/Admin/offre';
 import GraduateProfile from './component/Dashboards/Cv'
 import Quiz from './component/Dashboards/Quizz';
+import Alloffre from './component/AfficheOffre';
+
 
 function App() {
 
@@ -33,6 +35,8 @@ function App() {
             <Route path="/offre" element={<Offre />} />
             <Route path="/cv" element={<GraduateProfile />} />
             <Route path="/quiz" element={<Quiz />} />
+            <Route path="/alloffre" element={<Alloffre />} />
+
 
 
  

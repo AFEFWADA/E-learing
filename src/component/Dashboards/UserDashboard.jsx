@@ -2,6 +2,8 @@ import React from 'react';
 import FeaturedTest from './FeaturedTest';
 import LineChart from './LineDatas';
 import Sidebarr from './Sidebar';
+import { mockTransactions } from './Data';
+import { Box, Typography } from "@mui/material";
 
 const Dashboard = ({ user }) => {
   return (
@@ -26,7 +28,7 @@ const Dashboard = ({ user }) => {
           <FeaturedTest />
         </div>
 
-        {/* LineChart and Calendar Section */}
+        {/* LineChart and Transactions Section */}
         <div
           style={{
             display: 'flex',
@@ -36,11 +38,64 @@ const Dashboard = ({ user }) => {
           }}
         >
           {/* LineChart */}
-          <div style={{ flex: 1, marginRight: '20px' }}>
+          <div
+            style={{
+              flex: '1', // Take up half of the available space
+              marginRight: '20px',
+            }}
+          >
             <LineChart />
           </div>
 
-         
+          {/* Transactions */}
+          <div
+            style={{
+              flex: '1', 
+              marginLeft: '20px',
+              backgroundColor: '#343a40',
+              padding: '15px',
+              borderRadius: '8px',
+              overflow: 'auto',
+            }}
+          >
+            <Box
+              display="flex"
+              justifyContent="space-between"
+              alignItems="center"
+              borderBottom="4px solid #3F51B5"
+              color="#F5F5F5"
+              p="15px"
+            >
+              <Typography color="#F5F5F5" variant="h6" fontWeight="400">
+                Recent Tests
+              </Typography>
+            </Box>
+            {mockTransactions.map((transaction, i) => (
+              <Box
+                key={`${transaction.txId}-${i}`}
+                display="flex"
+                justifyContent="space-between"
+                alignItems="center"
+                borderBottom="4px solid #3F51B5"
+                p="15px"
+              >
+                <Box>
+                  <Typography color="#4CAF50" variant="h6" fontWeight="400">
+                    {transaction.txId}
+                  </Typography>
+                  <Typography color="#F5F5F5">{transaction.user}</Typography>
+                </Box>
+                <Box color="#F5F5F5">{transaction.date}</Box>
+                <Box
+                  backgroundColor="#4CAF50"
+                  p="5px 10px"
+                  borderRadius="4px"
+                >
+                  ${transaction.cost}
+                </Box>
+              </Box>
+            ))}
+          </div>
         </div>
       </div>
     </div>
