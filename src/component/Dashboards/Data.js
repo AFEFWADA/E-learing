@@ -542,32 +542,32 @@ export const mockBarData = [
 
 export const mockPieData = [
   {
-    id: "hack",
-    label: "hack",
+    id: "java",
+    label: "java",
     value: 239,
     color: "hsl(104, 70%, 50%)",
   },
   {
-    id: "make",
-    label: "make",
+    id: "python",
+    label: "python",
     value: 170,
     color: "hsl(162, 70%, 50%)",
   },
   {
-    id: "go",
-    label: "go",
+    id: "machine learning",
+    label: "machine learning",
     value: 322,
     color: "hsl(291, 70%, 50%)",
   },
   {
-    id: "lisp",
-    label: "lisp",
+    id: "dev web",
+    label: "dev web",
     value: 503,
     color: "hsl(229, 70%, 50%)",
   },
   {
-    id: "scala",
-    label: "scala",
+    id: "data base",
+    label: "data base",
     value: 584,
     color: "hsl(344, 70%, 50%)",
   },

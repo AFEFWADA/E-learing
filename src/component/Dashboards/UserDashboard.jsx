@@ -4,6 +4,7 @@ import LineChart from './LineDatas';
 import Sidebarr from './Sidebar';
 import { mockTransactions } from './Data';
 import { Box, Typography } from "@mui/material";
+import PieChart from './Piechart';
 
 const Dashboard = ({ user }) => {
   return (
@@ -97,6 +98,20 @@ const Dashboard = ({ user }) => {
             ))}
           </div>
         </div>
+
+        <div
+  style={{
+    display: 'flex',
+    marginTop: '20px',
+    justifyContent: 'center', // Center the PieChart horizontally
+    alignItems: 'center', // Center the PieChart vertically
+    height: '60vh', // Increase the height
+  }}
+>
+  <div style={{ width: '80%', height: '100%' }}> {/* Adjust width and height */}
+    <PieChart />
+  </div>
+</div>
       </div>
     </div>
   );
