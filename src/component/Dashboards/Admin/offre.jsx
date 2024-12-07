@@ -13,7 +13,7 @@ const Offre = () => {
   };
 
   return (
-    <Box display="flex" sx={{  minHeight: "100vh" }}>
+    <Box display="flex" sx={{ minHeight: "100vh" }}>
       {/* Sidebar */}
       <SidebarComponent />
 
@@ -135,22 +135,15 @@ const Offre = () => {
   );
 };
 
-const phoneRegExp =
-  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{,3}\)[ -]?)|([0-9]{,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-
 const checkoutSchema = yup.object().shape({
-  company: yup.string().required("required"),
-  position: yup.string().required("required"),
+  company: yup.string(),
+  position: yup.string(),
   workType: yup
     .string()
-    .oneOf(["full-time", "part-time", "contract"], "Invalid work type")
-    .required("required"),
-  workLocation: yup
-    .string()
-    .matches(phoneRegExp, "Phone number is not valid")
-    .required("required"),
-  createdBy: yup.string().required("required"),
-  address: yup.string().required("required"),
+    .oneOf(["full-time", "part-time", "contract"], "Invalid work type"),
+  workLocation: yup.string(), 
+  createdBy: yup.string(),
+  address: yup.string(),
 });
 
 const initialValues = {

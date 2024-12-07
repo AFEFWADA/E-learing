@@ -14,6 +14,10 @@ import Offre from './component/Dashboards/Admin/offre';
 import GraduateProfile from './component/Dashboards/Cv'
 import Quiz from './component/Dashboards/Quizz';
 import Alloffre from './component/AfficheOffre';
+import CourseComponent from './component/Dashboards/Usercours'
+import MachineLearning from './component/Dashboards/video/Machinelearning';
+import Web from './component/Dashboards/video/Dev';
+
 
 
 function App() {
@@ -36,6 +40,12 @@ function App() {
             <Route path="/cv" element={<GraduateProfile />} />
             <Route path="/quiz" element={<Quiz />} />
             <Route path="/alloffre" element={<Alloffre />} />
+            <Route path="/cours" element={<CourseComponent />} />
+            <Route path="/categories/ml" element={<MachineLearning />} />
+            <Route path="/categories/web-dev" element={<Web />} />
+
+
+
 
 
 

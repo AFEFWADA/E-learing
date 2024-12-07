@@ -27,7 +27,7 @@ function Naavbar() {
               <NavDropdown.Item onClick={() => navigate('/categories/ml')}>Machine Learning</NavDropdown.Item>
               <NavDropdown.Item onClick={() => navigate('/categories/web-dev')}>Web Development</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick={() => navigate('/categories/python')}>Python</NavDropdown.Item>
+              <NavDropdown.Item onClick={() => navigate('/categories/sql')}>Sql and No-Sql</NavDropdown.Item>
             </NavDropdown>
           </Nav>
 

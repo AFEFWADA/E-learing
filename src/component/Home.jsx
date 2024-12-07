@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SkillsTabs from './SkillsTabs'; 
 import PriceCard from './priceCard';
+import Alloffre from './AfficheOffre';
 
 function Home() {
   return (
@@ -68,6 +69,10 @@ function Home() {
       </h1>
     </div>
   </div>
+</Container>
+
+<Container>
+  <Alloffre />
 </Container>
 
       
