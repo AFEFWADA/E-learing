@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./cours.css";
+import SidebarUser from "./Sidebar";
 
 const Usercours = () => {
   const [currentVideo, setCurrentVideo] = useState({
@@ -70,6 +71,8 @@ const Usercours = () => {
   return (
     <div className="main-container">
       {/* Main Video Section */}
+      <SidebarUser />
+
       <div className="main-video">
         <iframe
           id="video-player"

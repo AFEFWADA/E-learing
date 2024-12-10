@@ -1,6 +1,15 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 
 function Footer() {
+  const location = useLocation();
+
+  const excludedPaths = ['/dashboard-user', '/dashboard-admin'];
+
+  if (excludedPaths.includes(location.pathname)) {
+    return null; 
+  }
+
   return (
     <footer className="text-center text-white" style={{ backgroundColor: '#343a40', padding: '1rem' }}>
       <div className="container">

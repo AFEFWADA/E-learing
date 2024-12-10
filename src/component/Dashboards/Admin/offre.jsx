@@ -13,7 +13,7 @@ const Offre = () => {
   };
 
   return (
-    <Box display="flex" sx={{ minHeight: "100vh" }}>
+    <Box display="flex" sx={{  minHeight: "100vh" }}>
       {/* Sidebar */}
       <SidebarComponent />
 
@@ -86,26 +86,26 @@ const Offre = () => {
                   fullWidth
                   variant="filled"
                   type="text"
-                  label="Work Location"
+                  label="Phone"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.workLocation}
-                  name="workLocation"
-                  error={!!touched.workLocation && !!errors.workLocation}
-                  helperText={touched.workLocation && errors.workLocation}
+                  value={values.Phone}
+                  name="Phone"
+                  error={!!touched.Phone && !!errors.Phone}
+                  helperText={touched.Phone && errors.Phone}
                   sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
                   fullWidth
                   variant="filled"
                   type="text"
-                  label="Created By"
+                  label="Email"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={values.createdBy}
-                  name="createdBy"
-                  error={!!touched.createdBy && !!errors.createdBy}
-                  helperText={touched.createdBy && errors.createdBy}
+                  value={values.email}
+                  name="email"
+                  error={!!touched.email && !!errors.email}
+                  helperText={touched.email && errors.email}
                   sx={{ gridColumn: "span 4" }}
                 />
                 <TextField
@@ -135,24 +135,31 @@ const Offre = () => {
   );
 };
 
+const phoneRegExp =
+  /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{,3}\)[ -]?)|([0-9]{,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
+
 const checkoutSchema = yup.object().shape({
-  company: yup.string(),
-  position: yup.string(),
+  company: yup.string().required("required"),
+  position: yup.string().required("required"),
   workType: yup
     .string()
-    .oneOf(["full-time", "part-time", "contract"], "Invalid work type"),
-  workLocation: yup.string(), 
-  createdBy: yup.string(),
-  address: yup.string(),
+    .oneOf(["full-time", "part-time", "contract"], "Invalid work type")
+    .required("required"),
+  Phone: yup
+    .string()
+    .matches(phoneRegExp, "Phone number is not valid")
+    .required("required"),
+  email: yup.string().required("required"),
+  address: yup.string().required("required"),
 });
 
 const initialValues = {
   company: "",
   position: "",
   workType: "",
-  workLocation: "",
-  createdBy: "",
+  Phone: "",
+  email: "",
   address: "",
 };
 
-export default Offre;
+export default Offre; 

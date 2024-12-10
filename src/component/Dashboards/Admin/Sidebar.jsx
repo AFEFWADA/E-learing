@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import EditNoteIcon from '@mui/icons-material/EditNote';
@@ -139,13 +138,6 @@ const SidebarAdmin = () => {
             >
               Pages
             </Typography>
-            <Item
-              title="Profile Form"
-              to="/form"
-              icon={<PersonOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
             <Item
               title="CV"
               to="/cv"
